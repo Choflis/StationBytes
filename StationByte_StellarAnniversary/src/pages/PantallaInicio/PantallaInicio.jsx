@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './pantallaInicio.css'
+import './PantallaInicio.css'
 
 function PantallaInicio() {
   const [mostrarBoton, setMostrarBoton] = useState(false)

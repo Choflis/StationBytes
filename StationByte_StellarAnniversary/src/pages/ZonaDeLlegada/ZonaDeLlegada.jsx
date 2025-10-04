@@ -1,39 +1,24 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './ZonaDeLlegada.css'
 import naveDragon from '../../assets/nave_dragon.png'
 import spaceStation from '../../assets/SpaceStation.png'
 
-function ZonaDeLlegada({ onContinuar }) {
+function ZonaDeLlegada() {
   const [escena, setEscena] = useState(1)
-  const [infoVisible, setInfoVisible] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (escena === 1) {
+      // Después de 5 segundos, cambiar a escena 2
       const timer = setTimeout(() => setEscena(2), 5000)
       return () => clearTimeout(timer)
+    } else if (escena === 2) {
+      // Después de 3 segundos en escena 2, ir a Harmony
+      const timer = setTimeout(() => navigate('/harmony'), 3000)
+      return () => clearTimeout(timer)
     }
-  }, [escena])
-
-  const handleContinuar = () => {
-    if (onContinuar) {
-      onContinuar()
-    }
-  }
-
-  const zonasInteractivas = {
-    modulo1: {
-      titulo: 'Módulo Harmony',
-      descripcion: 'Módulo central de acoplamiento de la ISS. Conecta los diferentes segmentos de la estación.'
-    },
-    naveDragon: {
-      titulo: 'Nave Dragon',
-      descripcion: 'Cápsula espacial de SpaceX diseñada para transportar carga y tripulación a la estación espacial.'
-    },
-    panelesSolares: {
-      titulo: 'Paneles Solares',
-      descripcion: 'Generan la energía necesaria para alimentar todos los sistemas de la estación espacial.'
-    }
-  }
+  }, [escena, navigate])
 
   return (
     <div className="zonaDeLlegada">
@@ -51,47 +36,11 @@ function ZonaDeLlegada({ onContinuar }) {
           <div className="contenedor-acoplamiento">
             <img src={spaceStation} alt="Estación Espacial" className="estacion-acoplada" />
             <img src={naveDragon} alt="Nave Dragon" className="nave-acoplada" />
-            
-            {/* Zonas interactivas */}
-            <div 
-              className="zona-interactiva zona-harmony"
-              onMouseEnter={() => setInfoVisible('modulo1')}
-              onMouseLeave={() => setInfoVisible(null)}
-            >
-              <div className="punto-info">+</div>
-            </div>
-            
-            <div 
-              className="zona-interactiva zona-dragon"
-              onMouseEnter={() => setInfoVisible('naveDragon')}
-              onMouseLeave={() => setInfoVisible(null)}
-            >
-              <div className="punto-info">+</div>
-            </div>
-            
-            <div 
-              className="zona-interactiva zona-paneles"
-              onMouseEnter={() => setInfoVisible('panelesSolares')}
-              onMouseLeave={() => setInfoVisible(null)}
-            >
-              <div className="punto-info">+</div>
-            </div>
           </div>
 
-          {/* Panel de información */}
-          {infoVisible && (
-            <div className="panel-informacion">
-              <h3>{zonasInteractivas[infoVisible].titulo}</h3>
-              <p>{zonasInteractivas[infoVisible].descripcion}</p>
-            </div>
-          )}
-
-          <div className="controles">
+          <div className="texto-acoplamiento">
             <h2>¡Acoplamiento Exitoso!</h2>
             <p>Bienvenido al módulo Harmony de la Estación Espacial Internacional</p>
-            <button className="boton-continuar" onClick={handleContinuar}>
-              Ingresar a la Estación →
-            </button>
           </div>
         </div>
       )}

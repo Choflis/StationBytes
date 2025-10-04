@@ -1,0 +1,250 @@
+.zonaDeLlegada {
+  background: linear-gradient(180deg, #0a0015 0%, #1a0a2e 50%, #0a0015 100%);
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Orbitron', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Escena 1: Aproximación */
+.escena1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.estacion {
+  position: absolute;
+  right: 10%;
+  top: 20%;
+  width: 400px;
+  height: auto;
+  opacity: 0.9;
+  filter: brightness(1.1);
+}
+
+.nave-aproximacion {
+  position: absolute;
+  left: -200px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: auto;
+  animation: aproximarse 5s ease-in-out forwards;
+}
+
+@keyframes aproximarse {
+  0% {
+    left: -200px;
+    transform: translateY(-50%) scale(0.5);
+  }
+  100% {
+    left: 35%;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.texto-escena {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+}
+
+.texto-escena h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.texto-escena p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Escena 2: Acoplado */
+.escena2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1s ease-in;
+}
+
+.contenedor-acoplamiento {
+  position: relative;
+  width: 80%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.estacion-acoplada {
+  position: absolute;
+  right: 15%;
+  width: 450px;
+  height: auto;
+  opacity: 0.95;
+  filter: brightness(1.2);
+}
+
+.nave-acoplada {
+  position: absolute;
+  left: 32%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 160px;
+  height: auto;
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Zonas interactivas */
+.zona-interactiva {
+  position: absolute;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.zona-interactiva:hover {
+  transform: scale(1.1);
+}
+
+.punto-info {
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  animation: pulsar 2s infinite;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes pulsar {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* Posiciones de las zonas interactivas */
+.zona-harmony {
+  right: 20%;
+  top: 45%;
+}
+
+.zona-dragon {
+  left: 35%;
+  top: 48%;
+}
+
+.zona-paneles {
+  right: 10%;
+  top: 30%;
+}
+
+/* Panel de información */
+.panel-informacion {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(16, 6, 30, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 1.5rem 2.5rem;
+  max-width: 500px;
+  text-align: center;
+  animation: slideDown 0.3s ease-out;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.panel-informacion h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #87ceeb;
+}
+
+.panel-informacion p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Controles */
+.controles {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  animation: fadeIn 1.5s ease-in;
+}
+
+.controles h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #87ceeb;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
+}
+
+.controles p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.boton-continuar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 2px solid white;
+  color: white;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.boton-continuar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.boton-continuar:active {
+  transform: translateY(0);
+}

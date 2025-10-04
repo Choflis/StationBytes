@@ -10,29 +10,33 @@
 
 .tituloJuego {
   position: absolute;
-  top: 8%;
+  top: 6%;
   left: 50%;
   transform: translateX(-50%);
-  font-size: clamp(2rem, 3rem, 4rem);
+  font-size: 3.7rem;
   color: white;
-  letter-spacing: 0.2em;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 0.9;
   text-align: center;
 }
 
+
 .botonJugar {
   position: absolute;
-  bottom: 15%;
-  right: 10%;
+  bottom: 12%;
+  right: 20%;
   background: none;
   border: 3px solid white;
   color: white;
   padding: 1rem 2rem;
   font-size: clamp(1rem, 1.2rem, 1.5rem);
   cursor: pointer;
-  transition: 0.3s;
+  border-radius: 0;
 }
 
 
 .botonJugar:hover {
   transform: scale(1.05);
+  transition: transform 0.3s ease;
 }

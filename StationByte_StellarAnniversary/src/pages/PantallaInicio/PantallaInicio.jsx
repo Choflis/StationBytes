@@ -13,7 +13,7 @@ function PantallaInicio() {
     <div className="pantallaInicio">
       <h1 className="tituloJuego">STELLAR ANNIVERSARY</h1>
       {mostrarBoton && (
-        <button className="botonJugar">Jugar</button>
+        <button className="botonJugar">Start</button>
       )}
     </div>
   )

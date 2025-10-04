@@ -21,17 +21,26 @@
   text-align: center;
 }
 
+.EstacionInternacional {
+  position: absolute;
+  bottom: 30%;
+  right: 10%;
+  width: 300px;
+  user-select: none;
+  pointer-events: none;
+}
 
 .botonJugar {
   position: absolute;
   bottom: 12%;
-  right: 20%;
+  right: 18%;
   background: none;
   border: 3px solid white;
   color: white;
   padding: 1rem 2rem;
   font-size: clamp(1rem, 1.2rem, 1.5rem);
   cursor: pointer;
+  width: 170px;
   border-radius: 0;
 }
 

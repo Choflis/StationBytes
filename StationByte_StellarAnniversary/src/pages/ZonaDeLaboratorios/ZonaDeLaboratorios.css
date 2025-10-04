@@ -1,0 +1,17 @@
+.zonaLaboratorios {
+  background-color: #210535;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+}
+
+.zonaLaboratorios h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}

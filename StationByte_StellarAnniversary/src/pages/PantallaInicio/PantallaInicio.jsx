@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './PantallaInicio.css'
+import nave from '../../assets/SpaceStation.png'
 
 function PantallaInicio() {
   const [mostrarBoton, setMostrarBoton] = useState(false)
@@ -12,6 +13,8 @@ function PantallaInicio() {
   return (
     <div className="pantallaInicio">
       <h1 className="tituloJuego">STELLAR ANNIVERSARY</h1>
+      <img src={nave} alt="Estación Internacional" className="EstacionInternacional" />
+
       {mostrarBoton && (
         <button className="botonJugar">Start</button>
       )}

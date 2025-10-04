@@ -3,7 +3,7 @@ import './ZonaDeLlegada.css'
 import naveDragon from '../../assets/nave_dragon.png'
 import spaceStation from '../../assets/SpaceStation.png'
 
-function ZonaDeLlegada() {
+function ZonaDeLlegada({ onContinuar }) {
   const [escena, setEscena] = useState(1)
   const [infoVisible, setInfoVisible] = useState(null)
 
@@ -15,8 +15,9 @@ function ZonaDeLlegada() {
   }, [escena])
 
   const handleContinuar = () => {
-    console.log('Continuar a Zona Harmony')
-    // Aquí luego conectaremos la navegación a ZonaHarmony
+    if (onContinuar) {
+      onContinuar()
+    }
   }
 
   const zonasInteractivas = {

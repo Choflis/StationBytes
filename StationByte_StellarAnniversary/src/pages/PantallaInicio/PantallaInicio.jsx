@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './PantallaInicio.css'
 import nave from '../../assets/SpaceStation.png'
 
-function PantallaInicio() {
+function PantallaInicio({ onIniciar }) {
   const [mostrarBoton, setMostrarBoton] = useState(false)
 
   useEffect(() => {
@@ -18,7 +18,9 @@ function PantallaInicio() {
         alt="Estación Internacional"
         className="EstacionInternacional"
       />
-      <button className="botonJugar">Start</button>
+      {mostrarBoton && (
+        <button className="botonJugar" onClick={onIniciar}>Start</button>
+      )}
     </div>
   )
 }

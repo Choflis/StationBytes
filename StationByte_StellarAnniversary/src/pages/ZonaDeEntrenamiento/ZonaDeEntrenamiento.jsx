@@ -2,24 +2,7 @@ import { useState } from "react";
 import "./ZonaDeEntrenamiento.css";
 import fondo from "./module-room.png";
 import VentanaMinijuegos from "../../components/VentanaMinijuegos/VentanaMinijuegos";
-
-// Componente de prueba para el juego
-function MiniJuego3D() {
-  return (
-    <div style={{
-      width: "100%",
-      height: "100%",
-      backgroundColor: "#222",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      color: "white",
-      fontSize: "2rem"
-    }}>
-      Mini Juego 3D aquí
-    </div>
-  );
-}
+import MiniJuego3D from "../../components/Minijuego3D/MiniJuego3D";
 
 function ZonaDeEntrenamiento() {
   const [mensaje, setMensaje] = useState("");
@@ -71,22 +54,10 @@ function ZonaDeEntrenamiento() {
 
       {/* Botón para abrir la ventana del mini juego */}
       <button
-        style={{
-          position: "absolute",
-          bottom: "20px",
-          right: "20px",
-          padding: "12px 20px",
-          borderRadius: "12px",
-          backgroundColor: "#1E8FFF",
-          color: "white",
-          fontWeight: "bold",
-          cursor: "pointer",
-          border: "none",
-          zIndex: 10,
-        }}
+        className="boton-juego"
         onClick={() => setMinijuegoAbierto(true)}
       >
-        Help the Astronaut
+        🚀 Help the Astronaut
       </button>
 
       {/* Ventana emergente con mini juego */}

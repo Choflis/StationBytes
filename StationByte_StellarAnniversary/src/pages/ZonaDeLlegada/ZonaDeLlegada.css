@@ -171,39 +171,48 @@
   margin: 0;
 }
 
-/* Objeto interactivo - solo círculo brillante */
+/* Objeto interactivo - área clickeable transparente */
 .objeto-interactivo {
   position: absolute;
-  background: radial-gradient(circle, rgba(135, 206, 235, 0.8), rgba(135, 206, 235, 0.3));
-  border: 2px solid #87ceeb;
+  background: transparent;
+  border: 2px solid transparent;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 300px;    /* 👈 AQUÍ: Cambia este valor para ajustar el ancho */
+  height: 300px;   /* 👈 AQUÍ: Cambia este valor para ajustar el alto */
   cursor: pointer;
   transition: all 0.3s ease;
-  animation: brillar 2s ease-in-out infinite;
-  box-shadow: 0 0 20px rgba(135, 206, 235, 0.8);
 }
 
 .objeto-centro {
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+/* Efecto hover - estilo espacial similar a zona entrenamiento */
 .objeto-interactivo:hover {
-  transform: translate(-50%, -50%) scale(1.3);
-  box-shadow: 0 0 40px rgba(135, 206, 235, 1), 0 0 60px rgba(135, 206, 235, 0.6);
+  border: 2px solid rgba(135, 206, 235, 0.8);
+  background: linear-gradient(
+    135deg,
+    rgba(135, 206, 235, 0.15),
+    rgba(100, 180, 255, 0.15)
+  );
+  box-shadow: 
+    0 0 20px rgba(135, 206, 235, 0.5),
+    inset 0 0 15px rgba(135, 206, 235, 0.2);
+  animation: pulseIDA 1.5s infinite;
 }
 
-@keyframes brillar {
+@keyframes pulseIDA {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(135, 206, 235, 0.8);
-    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 
+      0 0 20px rgba(135, 206, 235, 0.5),
+      inset 0 0 15px rgba(135, 206, 235, 0.2);
   }
   50% {
-    box-shadow: 0 0 40px rgba(135, 206, 235, 1), 0 0 60px rgba(135, 206, 235, 0.5);
-    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 
+      0 0 30px rgba(135, 206, 235, 0.7),
+      inset 0 0 20px rgba(135, 206, 235, 0.3);
   }
 }
 

@@ -1,45 +1,172 @@
+/* ==========================================
+   ZONA DE ENTRENAMIENTO - REDISEÑO COMPLETO
+   ========================================== */
+
+/* Contenedor principal */
 .zona-entrenamiento {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  background: #0a0e27;
 }
 
+/* Imagen de fondo */
 .fondo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: brightness(0.85);
 }
 
+/* Zonas clickeables */
 .zona-clickable {
   position: absolute;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  border-radius: 8px;
 }
 
-/* Visible temporalmente si quieres ver dónde están */
+/* Efecto hover en zonas - estilo espacial */
 .zona-clickable:hover {
-  outline: 2px solid rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(100, 200, 255, 0.8);
+  background: linear-gradient(
+    135deg,
+    rgba(100, 200, 255, 0.15),
+    rgba(150, 100, 255, 0.15)
+  );
+  box-shadow: 
+    0 0 20px rgba(100, 200, 255, 0.5),
+    inset 0 0 15px rgba(100, 200, 255, 0.2);
+  animation: pulseZone 1.5s infinite;
 }
 
+@keyframes pulseZone {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(100, 200, 255, 0.5),
+      inset 0 0 15px rgba(100, 200, 255, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(100, 200, 255, 0.7),
+      inset 0 0 20px rgba(100, 200, 255, 0.3);
+  }
+}
+
+/* Mensaje flotante rediseñado */
 .mensaje-flotante {
   position: absolute;
-  bottom: 30px;
+  bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(2, 33, 32, 0.85);
+  backdrop-filter: blur(10px);
   color: white;
-  padding: 10px 20px;
-  border-radius: 12px;
-  font-size: 1rem;
-  max-width: 80%;
+  padding: 18px 30px;
+  border-radius: 15px;
+  border: 2px solid rgba(100, 200, 255, 0.6);
+  font-size: 1.1rem;
+  max-width: 85%;
   text-align: center;
-  animation: fadeIn 0.3s ease-in-out;
+  animation: mensajeAppear 0.4s ease;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(100, 200, 255, 0.3);
+  z-index: 50;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+.mensaje-flotante p {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes mensajeAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Botón rediseñado - estilo espacial transparente */
+.boton-juego {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  padding: 15px 35px;
+  border-radius: 12px;
+  background: rgba(30, 143, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(100, 200, 255, 0.7);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  box-shadow: 
+    0 4px 15px rgba(30, 143, 255, 0.4),
+    inset 0 0 10px rgba(100, 200, 255, 0.1);
+}
+
+.boton-juego:hover {
+  background: rgba(30, 143, 255, 0.4);
+  border-color: rgba(150, 220, 255, 1);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 8px 25px rgba(30, 143, 255, 0.6),
+    inset 0 0 20px rgba(100, 200, 255, 0.2),
+    0 0 30px rgba(100, 200, 255, 0.4);
+}
+
+.boton-juego:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Animación de brillo sutil en el botón */
+.boton-juego::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.boton-juego:hover::before {
+  left: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mensaje-flotante {
+    font-size: 0.95rem;
+    padding: 15px 20px;
+    max-width: 90%;
+    bottom: 90px;
+  }
+
+  .boton-juego {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 25px;
+    font-size: 0.9rem;
+  }
 }

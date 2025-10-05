@@ -12,21 +12,23 @@
 }
 
 .ventanaContenido {
-  width: 80vw;
+  width: 50vw;
   height: 80vh;
-  background-color: rgba(2, 33, 32, 0.62);
+  background-color: rgba(2, 33, 32, 0.7);
   border-radius: 20px;
   position: relative;
   display: flex;
   overflow: hidden;
+  padding-left: 7%;
+  padding-right: 7%;
 }
 
 .bordeInterno {
   position: absolute;
-  top: 5%;
-  left: 5%;
-  width: 90%;
-  height: 90%;
+  top: 2.5%;
+  left: 2.5%;
+  width: 96%;
+  height: 94%;
   border: 2px solid white;
   border-radius: 16px;
   pointer-events: none;
@@ -40,8 +42,8 @@
 }
 
 .seccionIzquierda img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 98%;
+  max-height: 98%;
   object-fit: contain;
 }
 

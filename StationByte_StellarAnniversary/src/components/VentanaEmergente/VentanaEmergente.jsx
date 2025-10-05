@@ -1,19 +1,18 @@
 import './VentanaEmergente.css'
-import ejemploImg from '../../assets/nave_dragon.png'
 
-function VentanaEmergente({ onCerrar }) {
+function VentanaEmergente({ onCerrar, titulo, descripcion, imagen }) {
   return (
     <div className="ventanaEmergente">
       <div className="ventanaContenido">
         <div className="bordeInterno"></div>
 
         <div className="seccionIzquierda">
-          <img src={ejemploImg} alt="Imagen de ejemplo" />
+          <img src={imagen} alt={titulo} />
         </div>
 
         <div className="seccionDerecha">
-          <h2>Texto de ejemplo</h2>
-          <p>Esta es la sección de información dentro de la ventana emergente.</p>
+          <h2>{titulo}</h2>
+          <p>{descripcion}</p>
         </div>
 
         <button className="cerrarVentana" onClick={onCerrar}>X</button>

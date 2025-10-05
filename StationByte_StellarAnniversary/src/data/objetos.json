@@ -1,0 +1,14 @@
+[
+  {
+    "id": "nave1",
+    "titulo": "Nave Dragón",
+    "descripcion": "Esta es la nave dragón, lista para explorar.",
+    "imagen": "/src/assets/nave_dragon.png"
+  },
+  {
+    "id": "nave2",
+    "titulo": "Estación Espacial",
+    "descripcion": "Una estación espacial futurista.",
+    "imagen": "/src/assets/SpaceStation.png"
+  }
+]

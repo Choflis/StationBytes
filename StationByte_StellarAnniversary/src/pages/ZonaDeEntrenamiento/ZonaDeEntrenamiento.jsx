@@ -8,26 +8,27 @@ function ZonaDeEntrenamiento() {
   const [mensaje, setMensaje] = useState("");
   const [minijuegoAbierto, setMinijuegoAbierto] = useState(false);
 
-  const zonas = [
+ const zonas = [
     {
       id: 1,
-      nombre: "Cinta de gravedad cero 🏃‍♂️",
-      descripcion: "Los astronautas corren aquí para mantener su condición física.",
+      nombre: "Zero-Gravity Treadmill ",
+      descripcion: "Astronauts run here to maintain their physical fitness.",
       style: { top: "60%", left: "45%", width: "15%", height: "25%" },
     },
     {
       id: 2,
-      nombre: "Bicicleta espacial 🚴‍♀️",
-      descripcion: "Simula el pedaleo en microgravedad para fortalecer músculos.",
+      nombre: "Space Bike ",
+      descripcion: "Simulates pedaling in microgravity to strengthen muscles.",
       style: { top: "55%", left: "70%", width: "15%", height: "25%" },
     },
     {
       id: 3,
-      nombre: "Máquina ARED 💪",
-      descripcion: "Permite ejercicios de resistencia en el espacio.",
+      nombre: "ARED Machine",
+      descripcion: "Allows resistance exercises in space.",
       style: { top: "55%", left: "15%", width: "15%", height: "30%" },
     },
   ];
+
 
   return (
     <div className="zona-entrenamiento">
@@ -57,7 +58,7 @@ function ZonaDeEntrenamiento() {
         className="boton-juego"
         onClick={() => setMinijuegoAbierto(true)}
       >
-        🚀 Help the Astronaut
+        Help the Astronaut
       </button>
 
       {/* Ventana emergente con mini juego */}

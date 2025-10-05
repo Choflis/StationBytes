@@ -2,6 +2,140 @@
 
 Registro cronológico de todos los cambios importantes en el proyecto.
 
+## [Sesión 05 de Octubre 2024]
+
+### 🎮 Implementación de Minijuego - Pressure Stabilization
+- **Creado**: Componente `PressureGame` en carpeta ZonaDeLlegada
+- **Agregado**: Sistema completo de juego educativo sobre ecualización de presión
+- **Mecánica**: Ajustar presiones de Dragon (14.7 PSI) y Harmony (14.2 PSI) a 14.7 PSI
+- **Tiempo límite**: 45 segundos para completar la tarea
+- **Controles**: Botones INCREASE/RELEASE para cada módulo
+- **Indicadores visuales**: 
+  - Verde = Presión perfecta (±0.1 PSI)
+  - Amarillo = Cerca (±0.3 PSI)
+  - Rojo = Lejos del objetivo
+- **Estados**: STABLE, ADJUSTING, UNSTABLE
+- **Integrado**: Con componente `VentanaMinijuegos` existente
+
+#### Pantalla Introductoria del Minijuego
+- **Mission Briefing**: Explica por qué es importante igualar presiones
+- **Real Procedure**: Menciona que en realidad toma 1-2 horas
+- **Objective**: Objetivos claros con código de colores
+- **Botón START MISSION**: Verde brillante con animación pulsante
+
+#### Pantalla de Victoria
+- **Mensaje de éxito**: "PRESSURE STABILIZED!"
+- **Información educativa**: Explica lo que el jugador acaba de hacer
+- **Fun Fact**: ISS mantiene 14.7 PSI (equivalente a nivel del mar)
+- **Botón CONTINUE**: Jugador controla cuándo cerrar (no cierre automático)
+
+#### Características Visuales del Minijuego
+- Medidores verticales animados con barras de presión
+- Línea objetivo marcada en cada medidor
+- Símbolo de conexión entre naves con efecto de flujo
+- Temporizador con efecto pulsante (rojo cuando <10s)
+- Hint button con tooltip
+- Grid de fondo estilo futurista
+- Scroll personalizado para pantallas largas
+
+### 🚀 Zona de Llegada - Mejoras y Ajustes
+
+#### Escena 1: Aproximación
+- **Ajustado**: Efecto de perspectiva mejorado (scale 1.2 → 0.6)
+- **Agregada**: Imagen SpaceStation de fondo
+- **Optimizado**: Velocidad de reducción de tamaño más gradual
+
+#### Escena 2: Acoplamiento
+- **Modificado**: Imagen en pantalla completa (width: 100%, height: 100%, object-fit: cover)
+- **Aumentado**: Duración de 3 a 5 segundos
+- **Mejorado**: Texto con fondo semitransparente para mejor legibilidad
+  - Background: rgba(10, 0, 21, 0.8)
+  - Borde azul claro con efecto glass (backdrop-filter: blur)
+  - Padding aumentado para mejor presentación
+- **Reposicionado**: Texto movido más abajo (bottom: 10% → 5%)
+
+#### Escena 3: Interior de la Estación
+- **Modificado**: Imagen Station_initial.png en pantalla completa
+- **Agregado**: Texto inicial "Welcome Aboard" con información contextual
+- **Agregado**: Círculo brillante interactivo en el centro
+  - Tamaño: 30px con animación de brillo pulsante
+  - Efecto hover con scale y resplandor aumentado
+  - Abre VentanaEmergente con información sobre IDA
+- **Agregado**: Botón "Explore Harmony Module" (centro inferior)
+- **Agregado**: Botón "🎮 Pressure Stabilization" (derecha inferior)
+- **Eliminado**: Transición automática a Harmony (ahora requiere interacción)
+
+#### Sistema de Ventanas Emergentes
+- **Integrada**: VentanaEmergente para mostrar información sobre IDA
+- **Contenido**: Información sobre International Docking Adapter
+- **Imagen**: Usando IDA.png en lugar de Station_initial.png
+- **Fuente**: https://www.nasa.gov/international-space-station/harmony-module/
+
+### 🌐 Internacionalización
+- **Traducido**: Todos los textos de ZonaDeLlegada a inglés
+  - "Aproximándose..." → "Approaching the International Space Station"
+  - "¡Acoplamiento Exitoso!" → "Docking Successful!"
+  - "Bienvenido a Bordo" → "Welcome Aboard"
+  - "Explorar Módulo Harmony" → "Explore Harmony Module"
+- **Traducido**: Todos los textos de ZonaHarmony a inglés
+  - "Módulo Columbus" → "Columbus Module"
+  - "Vista Frontal" → "Front View"
+  - "Módulo Kibo" → "Kibo Module"
+  - "Mueve el ratón..." → "Move your mouse to explore..."
+  - "Hub Central" → "Central Hub"
+- **Traducido**: Información en VentanaEmergente a inglés
+
+### 🎯 Zona Harmony - Efecto 3D Completo
+- **Implementado**: Sistema de 3 vistas con imágenes diferentes
+  - Vista izquierda (0-30%): Columbus_module.png 🇪🇺
+  - Vista centro (30-70%): Harmony_vistaFrontal.png
+  - Vista derecha (70-100%): Japan_module.png 🇯🇵
+- **Agregado**: Etiquetas identificadoras para cada vista
+- **Mejorado**: Transiciones de opacidad dinámicas basadas en posición del ratón
+- **Agregado**: Indicador visual de posición con barra y marcador
+- **Agregado**: Instrucciones para el usuario
+- **Agregado**: Panel informativo flotante en la parte superior
+
+### 🎨 Estilos y Animaciones Nuevas
+- **Creado**: PressureGame.css con estilos completos para minijuego
+- **Agregadas**: Animaciones:
+  - `brillar`: Efecto pulsante para círculo interactivo
+  - `fadeInRight`: Entrada del botón de minijuego desde la derecha
+  - `fadeInUp`: Entrada del botón Harmony desde abajo
+  - `timerPulse`: Pulsación del temporizador
+  - `lineFlow`: Flujo animado en símbolo de conexión
+  - `buttonPulse`: Pulsación de botones importantes
+- **Mejorados**: Estilos de botones con gradientes y efectos hover
+- **Agregado**: Scroll personalizado con colores del tema
+
+### 📦 Nuevos Assets Utilizados
+- `IDA.png` - International Docking Adapter (1.4MB)
+- `Columbus_module.png` - Módulo europeo (1.2MB)
+- `Harmony_vistaFrontal.png` - Vista frontal Harmony (1.3MB)
+- `Japan_module.png` - Módulo Kibo japonés (1.4MB)
+- `stationInSpaceAcoplamiento.png` - Nave acoplada a estación (279KB)
+
+### 🐛 Correcciones
+- **Corregido**: Pantalla intro del minijuego se salía del contenedor
+  - Agregado overflow-y: auto con scroll personalizado
+  - Ajustados tamaños de fuentes y paddings
+  - Botón START MISSION siempre visible
+- **Corregido**: Cierre automático muy rápido en pantalla de victoria
+  - Eliminado setTimeout automático
+  - Agregado botón CONTINUE para control manual
+- **Corregido**: Texto sobre imagen en escena 2 difícil de leer
+  - Agregado fondo semitransparente con blur
+  - Mejorado contraste
+
+### 📊 Métricas del Build
+- **Módulos transformados**: 70 (antes: 57)
+- **CSS generado**: 18.56 kB (antes: 6.84 kB)
+- **JS generado**: 187.71 kB (antes: 180.16 kB)
+- **Tiempo de build**: ~700-900ms
+- **Assets totales**: 12 imágenes
+
+---
+
 ## [Sesión 04 de Octubre 2024]
 
 ### 🎉 Inicialización del Proyecto

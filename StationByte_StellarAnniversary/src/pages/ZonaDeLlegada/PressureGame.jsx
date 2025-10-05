@@ -5,7 +5,7 @@ function PressureGame({ onComplete }) {
   const [dragonPressure, setDragonPressure] = useState(14.7) // psi (presión atmosférica normal)
   const [harmonyPressure, setHarmonyPressure] = useState(14.2) // psi
   const [timeLeft, setTimeLeft] = useState(45)
-  const [gameStatus, setGameStatus] = useState('playing') // 'playing', 'won', 'lost'
+  const [gameStatus, setGameStatus] = useState('intro') // 'intro', 'playing', 'won', 'lost'
   const [showHint, setShowHint] = useState(false)
 
   const targetPressure = 14.7 // Target pressure in psi
@@ -34,11 +34,9 @@ function PressureGame({ onComplete }) {
     
     if (dragonInRange && harmonyInRange && gameStatus === 'playing') {
       setGameStatus('won')
-      if (onComplete) {
-        setTimeout(() => onComplete(), 1500)
-      }
+      // Removed auto-close, player must click button to close
     }
-  }, [dragonPressure, harmonyPressure, gameStatus, onComplete])
+  }, [dragonPressure, harmonyPressure, gameStatus])
 
   const adjustDragonPressure = (change) => {
     setDragonPressure(prev => {
@@ -75,11 +73,65 @@ function PressureGame({ onComplete }) {
     setGameStatus('playing')
   }
 
+  const handleStartGame = () => {
+    setGameStatus('playing')
+  }
+
+  const handleComplete = () => {
+    if (onComplete) {
+      onComplete()
+    }
+  }
+
+  // Intro Screen
+  if (gameStatus === 'intro') {
+    return (
+      <div className="pressure-game">
+        <div className="intro-screen">
+          <h2> PRESSURE STABILIZATION </h2>
+          
+          <div className="info-section">
+            <h3>Mission Briefing</h3>
+            <p>
+              After docking, the Dragon spacecraft and Harmony module need to equalize 
+              their internal pressures before the hatch can be safely opened.
+            </p>
+            <p>
+              <strong>Why is this important?</strong> A pressure difference between the two 
+              vessels could cause rapid air flow when opening the hatch, potentially damaging 
+              equipment and endangering the crew.
+            </p>
+            <p>
+              <strong>Real procedure:</strong> In actual ISS operations, astronauts carefully 
+              monitor and adjust pressure levels to ensure a smooth and safe transition between 
+              modules. This process can take 1-2 hours in reality!
+            </p>
+          </div>
+
+          <div className="objective-section">
+            <h3>Your Objective</h3>
+            <p>Adjust the pressure valves to bring both Dragon and Harmony to <strong>14.7 PSI</strong></p>
+            <ul>
+              <li>🟢 <strong>Green</strong> = Perfect pressure (ready to open)</li>
+              <li>🟡 <strong>Yellow</strong> = Close, keep adjusting</li>
+              <li>🔴 <strong>Red</strong> = Too far, needs correction</li>
+            </ul>
+            <p className="time-warning">⏱️ You have 45 seconds to complete the task!</p>
+          </div>
+
+          <button className="start-button" onClick={handleStartGame}>
+            START MISSION
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="pressure-game">
       {/* Header */}
       <div className="game-header">
-        <h2>🚀 PRESSURE STABILIZATION 🚀</h2>
+        <h2> PRESSURE STABILIZATION </h2>
         <div className="timer" style={{ color: timeLeft < 10 ? '#ff6b6b' : '#64C8FF' }}>
           TIME: {timeLeft}s
         </div>
@@ -200,6 +252,25 @@ function PressureGame({ onComplete }) {
         <div className="result-message success">
           <h3>✅ PRESSURE STABILIZED!</h3>
           <p>Hatch opening sequence initiated...</p>
+          
+          <div className="success-info">
+            <h4>🎓 What You Just Did:</h4>
+            <p>
+              You successfully equalized the pressure between Dragon and Harmony! 
+              This is a critical safety step that real astronauts perform before 
+              entering the ISS.
+            </p>
+            <p>
+              <strong>Fun Fact:</strong> The ISS maintains an internal pressure of 14.7 PSI 
+              (pounds per square inch), which is equivalent to sea level atmospheric 
+              pressure on Earth. This ensures astronauts can breathe normally without 
+              needing pressurized suits inside the station.
+            </p>
+          </div>
+
+          <button className="continue-button" onClick={handleComplete}>
+            CONTINUE
+          </button>
         </div>
       )}
 

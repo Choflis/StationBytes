@@ -1,17 +1,39 @@
 .zonaLaboratorios {
-  background-color: #210535;
-  color: white;
+  position: relative; /* 👈 Esto es CLAVE */
+  background-image: url('../../assets/laboratorio.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Orbitron', sans-serif;
-  text-align: center;
+  overflow: hidden;
 }
 
-.zonaLaboratorios h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.botonAbrir {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
+
+.imagenBoton {
+  width: 80px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.imagenBoton:hover {
+  transform: scale(1.2);
+}
+
+.Laptop {
+  top: 150px;
+  left: 250px;
+}
+
+.nave2 {
+  top: 320px;
+  left: 780px;
+}
+
+

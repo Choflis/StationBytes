@@ -1,12 +1,51 @@
-import './ZonaDeLaboratorios'
+import { useState } from 'react'
+import './ZonaDeLaboratorios.css'
+import VentanaEmergente from '../../components/VentanaEmergente/VentanaEmergente'
 
-function ZonaLaboratorios() {
+// Importa tu JSON
+import objetosData from '../../data/objetos_laboratorio.json' //datos de los objetos dentro de las ventanas emergentes
+
+// Imagenes
+import naveDragon from '../../assets/nave_dragon.png'
+import spaceStation from '../../assets/SpaceStation.png'
+import Laptop from '../../assets/Laptopobject.png'
+
+// Mapea el JSON para usar las imágenes importadas
+const objetosConImagenes = objetosData.map(obj => {
+  let imagen
+  if (obj.id === 'Laptop') imagen = Laptop
+  else if (obj.id === 'nave2') imagen = spaceStation
+  return { ...obj, imagen }
+})
+
+function ZonaCupula() {
+  const [mostrarVentana, setMostrarVentana] = useState(false)
+  const [ventanaSeleccionada, setVentanaSeleccionada] = useState(null)
+
+  const abrirVentana = (id) => {
+    const datos = objetosConImagenes.find(obj => obj.id === id)
+    setVentanaSeleccionada(datos)
+    setMostrarVentana(true)
+  }
+
   return (
     <div className="zonaLaboratorios">
-      <h1>Zona de Laboratorios</h1>
-      <p>Hola, esta es la página de la zona de laboratorios.</p>
+      {objetosConImagenes.map(obj => (
+      <button key={obj.id} className={`botonAbrir ${obj.id}`} onClick={() => abrirVentana(obj.id)}>
+        <img src={obj.imagen} alt={obj.titulo} className="imagenBoton" />
+      </button>
+      ))}
+
+      {mostrarVentana && ventanaSeleccionada && (
+        <VentanaEmergente
+          onCerrar={() => setMostrarVentana(false)}
+          titulo={ventanaSeleccionada.titulo}
+          descripcion={ventanaSeleccionada.descripcion}
+          imagen={ventanaSeleccionada.imagen}
+        />
+      )}
     </div>
   )
 }
 
-export default ZonaLaboratorios
+export default ZonaCupula

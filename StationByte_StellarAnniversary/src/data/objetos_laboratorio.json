@@ -1,0 +1,14 @@
+[
+  {
+    "id": "nave2",
+    "titulo": "Estación Espacial",
+    "descripcion": "Una estación espacial futurista.",
+    "imagen": "/src/assets/SpaceStation.png"
+  },
+  {
+    "id": "Laptop",
+    "titulo": "Laptop prueba",
+    "descripcion": "Es una laptop",
+    "imagen": "/src/assets/Laptopobject.png"
+  }
+]

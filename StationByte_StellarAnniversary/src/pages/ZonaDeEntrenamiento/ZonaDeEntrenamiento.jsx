@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ZonaDeEntrenamiento.css";
 import fondo from "./module-room.png";
 import VentanaMinijuegos from "../../components/VentanaMinijuegos/VentanaMinijuegos";
@@ -7,6 +8,7 @@ import MiniJuego3D from "../../components/Minijuego3D/MiniJuego3D";
 function ZonaDeEntrenamiento() {
   const [mensaje, setMensaje] = useState("");
   const [minijuegoAbierto, setMinijuegoAbierto] = useState(false);
+  const navigate = useNavigate();
 
   const zonas = [
     {
@@ -66,6 +68,21 @@ function ZonaDeEntrenamiento() {
           <MiniJuego3D />
         </VentanaMinijuegos>
       )}
+
+      {/* Botones de navegación */}
+      <button
+        className="boton-siguiente"
+        onClick={() => navigate("/cupula")}
+      >
+        🔭 Cupola Module →
+      </button>
+
+      <button
+        className="boton-retorno"
+        onClick={() => navigate("/laboratorios")}
+      >
+        ← Back to Laboratories
+      </button>
     </div>
   );
 }

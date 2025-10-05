@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './ZonaCupula.css'
 import VentanaEmergente from '../../components/VentanaEmergente/VentanaEmergente'
 import objetosData from '../../data/objetos.json'
@@ -6,6 +7,7 @@ import objetosData from '../../data/objetos.json'
 function ZonaCupula() {
   const [mostrarVentana, setMostrarVentana] = useState(false)
   const [ventanaSeleccionada, setVentanaSeleccionada] = useState(null)
+  const navigate = useNavigate()
 
   const abrirVentana = (id) => {
     const datos = objetosData.find(obj => obj.id === id)
@@ -33,6 +35,14 @@ function ZonaCupula() {
           imagen={ventanaSeleccionada.imagen}
         />
       )}
+
+      {/* Botón de retorno a Entrenamiento */}
+      <button
+        className="boton-retorno"
+        onClick={() => navigate('/entrenamiento')}
+      >
+        ← Back to Training
+      </button>
     </div>
   )
 }

@@ -36,4 +36,67 @@
   left: 780px;
 }
 
+/* Botón principal de navegación - estilo Harmony */
+.boton-siguiente {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #87ceeb 0%, #4a9fd8 100%);
+  color: #0a0015;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: fadeInUp 1.5s ease-out;
+  box-shadow: 0 0 25px rgba(135, 206, 235, 0.6);
+  z-index: 100;
+}
+
+.boton-siguiente:hover {
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 0 35px rgba(135, 206, 235, 0.9);
+  background: linear-gradient(135deg, #a8e0ff 0%, #87ceeb 100%);
+}
+
+/* Botón de retorno - pequeño en esquina superior izquierda */
+.boton-retorno {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  border: 2px solid rgba(135, 206, 235, 0.5);
+  border-radius: 8px;
+  background: rgba(10, 0, 21, 0.7);
+  backdrop-filter: blur(10px);
+  color: #87ceeb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.boton-retorno:hover {
+  background: rgba(135, 206, 235, 0.2);
+  border-color: #87ceeb;
+  transform: translateX(-3px);
+  box-shadow: 0 0 15px rgba(135, 206, 235, 0.5);
+}
+
+@keyframes fadeInUp {
+  from {
+    bottom: -5%;
+    opacity: 0;
+  }
+  to {
+    bottom: 8%;
+    opacity: 1;
+  }
+}
 

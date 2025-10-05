@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './ZonaHarmony.css'
 import columbusModule from '../../assets/Columbus_module.png'
 import harmonyFrontal from '../../assets/Harmony_vistaFrontal.png'
@@ -6,6 +7,7 @@ import japanModule from '../../assets/Japan_module.png'
 
 function ZonaHarmony() {
   const [mouseX, setMouseX] = useState(0.5)
+  const navigate = useNavigate()
 
   const handleMouseMove = (e) => {
     const x = e.clientX / window.innerWidth
@@ -83,6 +85,16 @@ function ZonaHarmony() {
           Explore the different areas of the station. Move your mouse to change the view.
         </p>
       </div>
+
+      {/* Botón de navegación a Laboratorios */}
+      <button className="boton-laboratorios" onClick={() => navigate('/laboratorios')}>
+        🔬 Laboratories Module →
+      </button>
+
+      {/* Botón de retorno a Llegada */}
+      <button className="boton-retorno" onClick={() => navigate('/llegada')}>
+        ← Back to Docking Area
+      </button>
     </div>
   )
 }

@@ -7,14 +7,14 @@ import objetosData from '../../data/objetos_laboratorio.json' //datos de los obj
 
 // Imagenes
 import naveDragon from '../../assets/nave_dragon.png'
-import spaceStation from '../../assets/SpaceStation.png'
-import Laptop from '../../assets/Laptopobject.png'
+import Monitor from '../../assets/SpaceStation.png'
+import Probeta from '../../assets/probetas.png'
 
 // Mapea el JSON para usar las imágenes importadas
 const objetosConImagenes = objetosData.map(obj => {
   let imagen
-  if (obj.id === 'Laptop') imagen = Laptop
-  else if (obj.id === 'nave2') imagen = spaceStation
+  if (obj.id === 'Probetas') imagen = Probeta
+  else if (obj.id === 'Monitor') imagen = Monitor
   return { ...obj, imagen }
 })
 
@@ -27,7 +27,6 @@ function ZonaCupula() {
     setVentanaSeleccionada(datos)
     setMostrarVentana(true)
   }
-
   return (
     <div className="zonaLaboratorios">
       {objetosConImagenes.map(obj => (

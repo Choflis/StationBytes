@@ -1,0 +1,88 @@
+.mini-juego-maraton-container {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border-radius: 15px;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mini-juego-maraton {
+  width: 100%;
+  height: 250px;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.runner {
+  width: 40px;
+  height: 60px;
+  background: #64C8FF;
+  position: absolute;
+  left: 50px;
+  border-radius: 5px;
+}
+
+.obstacle {
+  width: 30px;
+  position: absolute;
+  bottom: 0;
+  border-radius: 5px;
+}
+
+.obstacle.meteor {
+  height: 50px;
+  background: #FF6464;
+}
+
+.obstacle.satellite {
+  height: 25px;
+  background: #FFD700;
+}
+
+.score {
+  font-size: 1rem;
+  color: #8FDFFF;
+}
+
+.instructions {
+  font-size: 0.8rem;
+  color: #B4E7FF;
+}
+
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: red;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Partículas espaciales */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background: #64C8FF;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation-name: float;
+  animation-timing-function: linear;
+  animation-iteration-count: infin
+}

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './ZonaDeLaboratorios.css'
 import VentanaEmergente from '../../components/VentanaEmergente/VentanaEmergente'
 
@@ -21,6 +22,7 @@ const objetosConImagenes = objetosData.map(obj => {
 function ZonaCupula() {
   const [mostrarVentana, setMostrarVentana] = useState(false)
   const [ventanaSeleccionada, setVentanaSeleccionada] = useState(null)
+  const navigate = useNavigate()
 
   const abrirVentana = (id) => {
     const datos = objetosConImagenes.find(obj => obj.id === id)
@@ -43,6 +45,15 @@ function ZonaCupula() {
           imagen={ventanaSeleccionada.imagen}
         />
       )}
+
+      {/* Botones de navegación */}
+      <button className="boton-siguiente" onClick={() => navigate('/entrenamiento')}>
+        💪 Training Module →
+      </button>
+
+      <button className="boton-retorno" onClick={() => navigate('/harmony')}>
+        ← Back to Harmony
+      </button>
     </div>
   )
 }
